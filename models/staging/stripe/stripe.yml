@@ -1,0 +1,20 @@
+version: 2 
+
+models:
+  - name: stg_payments
+    description: Informations about payments.
+    columns: 
+      - name: payment_id
+        description: The payment's id is unique and not null.
+        tests:
+          - unique
+          - not_null
+      - name: order_id 
+        description: The order's id.
+      - name: status
+        description: "{{ doc('payments_status') }}"
+        tests:
+          - accepted_values:
+              values: ['success', 'fail']
+      - name: amount
+        description: The transaction's amount.
