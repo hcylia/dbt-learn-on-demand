@@ -2,7 +2,8 @@ select
     id as order_id,
     user_id as customer_id,
     order_date,
-    status
+    status,
+    _etl_loaded_at
 
 from
-    `dbt-tutorial.jaffle_shop.orders`
+    {{ source('jaffle_shop', 'orders') }}

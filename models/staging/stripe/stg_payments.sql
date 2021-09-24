@@ -2,8 +2,8 @@ select
     id as payment_id,
     orderid as order_id,
     status,
-    amount / 100 as amount
+    amount / 100 as amount,
+    _batched_at
 
 from 
-    `dbt-tutorial.stripe.payment`
-sta
+    {{ source('stripe', 'payment') }}
